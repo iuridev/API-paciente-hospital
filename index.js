@@ -30,10 +30,16 @@ exports.handler = async (event) => {
 
     return{
       statusCode: 200,
-      body: JSON.stringify(todosPacientes)
+      body: JSON.stringify(pacienteEncontrado)
     }
   }
 
+  const todosPacientes = pacientes.map(p=>({...p, idade: calcIdade(p)}))
+
+  return{
+    statusCode:200,
+    body: JSON.stringify(todosPacientes)
+  }
 
 };
 
